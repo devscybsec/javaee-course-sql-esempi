@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/azienda">
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+	<ResourceLink global="jdbc/azienda" name="jdbc/azienda"   type="javax.sql.DataSource">
+	</ResourceLink>
+</Context>

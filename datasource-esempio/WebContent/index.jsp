@@ -14,11 +14,15 @@ select * from impiegati
 		border-spacing: 0;
 	}
 	td, th {
-		padding: 2px;
+		padding: 4px;
 		border: 1px solid black;
 	}
 	.inline {
 		display: flex;
+		padding: 4px;
+	}
+	.inline > label {
+		width: 120px;
 	}
 	.incol {
 		display: flex;

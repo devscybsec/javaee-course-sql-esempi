@@ -11,27 +11,31 @@ select * from impiegati
     <title>DataSource Test</title>
   </head>
   <body>
+  	<h2>Inserimento</h2>
   	<form action="./insert" method="post"> 
-        <p>Nome:</p>  
-        <!-- Create an element with mandatory name attribute, 
-        so that data can be transfer to the servlet using getParameter() -->
-        <input type="text" name="nome"/> 
-        <br/> 
-        <p>Cognome:</p>  
-        <input type="text" name="cognome"/> 
-        <p>Settore:</p>  
-        
-        <input type="text" name="settore"/> 
-        <br/><br/><br/> 
+        <p>Nome: <input type="text" name="nome"/> </p>
+        <p>Cognome: <input type="text" name="cognome"/> </p>
+        <p>Settore: <input type="text" name="settore"/></p>
+        <br/>
         <input type="submit"/> 
     </form>
     
   <h2>Results</h2>
 
 <c:forEach var="row" items="${rs.rows}">
+	Id: ${row.id} <br/>
     Nome: ${row.nome} <br/>
     Cognome: ${row.cognome}<br/>
     Settore: ${row.settore}<br/>
+    <form action="./update">
+    	<input type="hidden" value="${row.id}" name="id"/>
+    	<input type="button" value="Update"/>
+    </form>
+    <form action="./delete" method="post">
+    	<input type="hidden" value="${row.id}" name="id"/>
+    	<input type="submit" value="Delete"/>
+    </form>
+    <br/>
     <br/>
 </c:forEach>
 

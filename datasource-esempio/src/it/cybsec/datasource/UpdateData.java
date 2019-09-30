@@ -9,8 +9,8 @@ import javax.servlet.http.*;
 /**
  * Servlet implementation class InsertData
  */
-@WebServlet("/insert")
-public class InsertData extends HttpServlet {
+@WebServlet("/update")
+public class UpdateData extends HttpServlet {
 	
 	private DatabaseConnection dc;
 	private static final long serialVersionUID = 1L;
@@ -21,6 +21,15 @@ public class InsertData extends HttpServlet {
 		} catch(Exception e) {
 			
 		}
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 try { 
+			 	
+	        } 
+	        catch (Exception e) { 
+	            e.printStackTrace(); 
+	        }
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

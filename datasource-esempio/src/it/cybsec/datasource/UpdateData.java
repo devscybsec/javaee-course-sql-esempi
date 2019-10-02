@@ -13,14 +13,22 @@ import javax.servlet.http.*;
 public class UpdateData extends HttpServlet {
 
 	private DatabaseConnection dc;
+	private Connection conn;
+	private PreparedStatement st;
 	private static final long serialVersionUID = 1L;
 
 	public void init(ServletConfig config) {
 		try {
 			dc = new DatabaseConnection();
+			setStatement();
 		} catch (Exception e) {
 
 		}
+	}
+	
+	private void setStatement() throws SQLException {
+		conn = dc.getConnection();
+		st = conn.prepareStatement("update impiegati set nome = ?, cognome = ?, settore = ? where id = ?");
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,10 +40,9 @@ public class UpdateData extends HttpServlet {
 			throws ServletException, IOException {
 		String message = "";
 		try {
-			Connection conn = dc.getConnection();
-
-			PreparedStatement st = conn.prepareStatement("update impiegati set nome = ?, cognome = ?, settore = ? where id = ?");
-
+			if(conn.isClosed())
+				setStatement();
+				
 			st.setString(1, request.getParameter("nome"));
 			st.setString(2, request.getParameter("cognome"));
 			st.setString(3, request.getParameter("settore"));

@@ -13,23 +13,30 @@ import javax.servlet.http.*;
 public class DeleteData extends HttpServlet {
 
 	private DatabaseConnection dc;
+	private Connection conn;
+	private PreparedStatement st;
 	private static final long serialVersionUID = 1L;
 
 	public void init(ServletConfig config) {
 		try {
 			dc = new DatabaseConnection();
+			setStatement();
 		} catch (Exception e) {
 
 		}
+	}
+	
+	private void setStatement() throws SQLException {
+		conn = dc.getConnection();
+		st = conn.prepareStatement("delete from impiegati where id = ?");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			Connection conn = dc.getConnection();
-
-			PreparedStatement st = conn.prepareStatement("delete from impiegati where id = ?");
-
+			if(conn.isClosed())
+				setStatement();
+			
 			st.setString(1, request.getParameter("id"));
 			st.executeUpdate();
 			st.close();

@@ -60,12 +60,12 @@ select * from impiegati
 			<td>
 			<div class="inline">
 				<form action="./update">
-					<input type="hidden" value="${row.id}" name="id" /> <input
-						type="submit" value="Update" />
+					<input type="hidden" value="${row.id}" name="id" />
+					<input type="submit" value="Update" />
 				</form>
 				<form action="./delete" method="post">
-					<input type="hidden" value="${row.id}" name="id" /> <input
-						type="submit" value="Delete" />
+					<input type="hidden" value="${row.id}" name="id" />
+					<input type="submit" value="Delete" />
 				</form>
 			</div>
 			</td>

@@ -9,6 +9,9 @@
 	from dipendenti d 
 	join ruoli r on d.ruolo = r.id
 	join uffici u on d.ufficio = u.id
+	where d.id IN (select responsabile 
+				   from dipendenti
+				   where responsabile is not null)
 </sql:query>
 
 <html>

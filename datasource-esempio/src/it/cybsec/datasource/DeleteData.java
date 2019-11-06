@@ -38,7 +38,7 @@ public class DeleteData extends HttpServlet {
 				setStatement();
 			
 			st.setString(1, request.getParameter("id"));
-			st.executeUpdate();
+			st.execute();
 			st.close();
 			conn.close();
 			

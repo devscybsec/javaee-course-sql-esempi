@@ -41,7 +41,7 @@ public class InsertData extends HttpServlet {
 			st.setString(1, request.getParameter("nome"));
 			st.setString(2, request.getParameter("cognome"));
 			st.setString(3, request.getParameter("settore"));
-			st.executeUpdate();
+			st.execute();
 			st.close();
 			conn.close();
 
